@@ -1,10 +1,10 @@
-const User = require ('../models/User.js')
-const generateToken = require ('../utils/token.js')
+const User = require('../models/User.js')
+const generateToken = require('../utils/token.js')
 
 exports.register = async (req, res) => {
-  const { email, password, name } = req.body;
+  const { email, password, nome } = req.body;
   try {
-    const user = new User({ email, password, name });
+    const user = new User({ email, password, nome });
     await user.save();
     const token = generateToken(user._id);
     res.status(201).json({ token });
